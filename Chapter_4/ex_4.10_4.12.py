@@ -24,3 +24,8 @@ for my_food in my_foods:
 print('Friend favorite foods are:')
 for friend_food in friend_foods:
     print(f'- {friend_food}')
+
+# ex.x
+pizzas_list = ['pepperoni', 'cheesy', 'banana', 'sausage', 'tomato']
+print(pizzas_list[0:4:2]) 
+print(pizzas_list[0:4:3])
