@@ -24,17 +24,17 @@ print(f'- Alex: {favorite_numbers['Alex']}')
 print(f'- Ivan: {favorite_numbers['Ivan']}\n')
 
 # ex.6.3
-definition_1 = 'a program that translates the entire source code into '
-definition_1 += 'machine code all at once before execution, creating a '
-definition_1 += 'standalone file.'
-definition_2 = 'a program that executes code line by line directly at runtime'
-definition_2 += ' (like Python does), without prior compilation.'
-definition_3 = 'a named storage location (or label) that holds a specific '
-definition_3 += 'value or piece of data in a program.'
-definition_4 = 'a specialized format for organizing, storing, and managing '
-definition_4 += 'data efficiently (such as lists or dictionaries).'
-definition_5 = 'a named block of code designed to perform a specific '
-definition_5 += 'task that can be reused anywhere in the program.'
+definition_1 = f'a program that translates the entire source code into\n'
+definition_1 += f'  machine code all at once before execution, creating a\n'
+definition_1 += '  standalone file.'
+definition_2 = f'a program that executes code line by line directly at runtime\n'
+definition_2 += f'  (like Python does), without prior compilation.'
+definition_3 = f'a named storage location (or label) that holds a specific\n'
+definition_3 += '  value or piece of data in a program.'
+definition_4 = f'a specialized format for organizing, storing, and managing\n'
+definition_4 += '  data efficiently (such as lists or dictionaries).'
+definition_5 = f'a named block of code designed to perform a specific\n'
+definition_5 += '  task that can be reused anywhere in the program.'
 
 glossary_list = {'Compiller': definition_1,
                  'Interpreter': definition_2,
