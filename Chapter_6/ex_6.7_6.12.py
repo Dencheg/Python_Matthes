@@ -90,4 +90,26 @@ for name, numbers in favorite_numbers.items():
         if i == len(numbers):
             text += f'{number}'
     print(f'- {name}: {text}')
-    
+print()
+
+# ex.6.11
+fact_1 = f"Minas-Tirith astablished of the site \nan another fortress.\n"
+fact_2 = f'Vivek divided into two parts of the \nworld.\n'
+fact_3 = f'all planet, on continuous city.\n'
+
+cities = {'Minas-Tirith':{'country':'Gondor;',
+                        'population':'50 thousand people;',
+                        'intrsting fact':fact_1},
+                        'Vivek':{'country':'Vvanderfell;',
+                        'population':'55 thousand people;',
+                         'intrsting fact':fact_2},
+                        'Coruscant':{'country':'Galctian Republic;',
+                        'population':'1,9 trillion peoples;',
+                        'intrsting fact':fact_3}}
+
+for city in cities:
+    print(f'Facts abaut city {city}:')
+    for fact in cities[city]:
+        print(f'- {fact}: {cities[city][fact]}')
+
+# ex.6.12
