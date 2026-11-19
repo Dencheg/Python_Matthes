@@ -72,7 +72,7 @@ class Restaurant():
 #######################################################
 
 
-# ex.9.3
+# ex.9.5
 class User():
     """user profil with a summari information"""
 
