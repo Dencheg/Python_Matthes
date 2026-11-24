@@ -28,7 +28,7 @@ class Ship:
         """Рисует корабль в текущей позиции"""
         self.screen.blit(self.image, self.rect)
 
-    def moved_ship(self):
+    def update(self):
         """Перемещает корабль влево или вправо"""
         if self.move_left and self.rect.left > 0:
             self.x -= self.settings.ship_speed

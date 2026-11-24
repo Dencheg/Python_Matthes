@@ -2,6 +2,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from bullet import Bullet
 
 class AlienInvasion:
     """Класс для управления ресурсом и поведением игры"""
@@ -23,19 +24,24 @@ class AlienInvasion:
         pygame.display.set_caption('Alien Invasion')
         self.bg_color = (self.settings.bg_color)
         self.ship = Ship(self)
+        self.bullets = pygame.sprite.Group()
 
     def run_game(self):
         """Запускает основной цикл игры"""
         while True:
-            self._update_screen()
             self._check_event()
-            self.ship.moved_ship()
+            self.ship.update()
+            self._update_bullets()
+            self._update_screen()
             self.clock.tick(60)
 
     def _update_screen(self):
         """Обновление экрана """
         # При каждом проходе цикла перерисовается экран
         self.screen.fill(self.bg_color)
+        # Отрисовывает пулю
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
         self.ship.blitme()
         # Отоброжение последнего прорисованного экрана
         pygame.display.flip()
@@ -49,7 +55,22 @@ class AlienInvasion:
                 self._key_down_event(event)      
             elif event.type == pygame.KEYUP:
                 self._key_up_event(event)
-                
+
+    def _fire_bullet(self):
+        """Создает новый снаряд и включает его в группу"""
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
+    def _update_bullets(self):
+        """Обновляет позиции снарядов и удаляет старые снаряды"""
+        self.bullets.update()
+        # Удаление снарядов вышедших за экран
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+            # print(len(self.bullets))
+
     def _key_down_event(self, event):
         """События нажатие клавиши"""
         if event.key == pygame.K_RIGHT:
@@ -58,7 +79,9 @@ class AlienInvasion:
             self.ship.move_left = True
         elif event.key == pygame.K_q:
             sys.exit()
-
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
+            
     def _key_up_event(self, event):
         """События отпускания клавиши"""
         if event.key == pygame.K_RIGHT:
